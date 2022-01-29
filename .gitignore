@@ -1,2 +1,15 @@
 /server/config.env
 /server/node_modules
+
+/Furnishare/node_modules/
+/Furnishare/.expo/
+/Furnishare/dist/
+/Furnishare/npm-debug.*
+/Furnishare/*.jks
+/Furnishare/*.p8
+/Furnishare/*.p12
+/Furnishare/*.key
+/Furnishare/*.mobileprovision
+/Furnishare/*.orig.*
+/Furnishare/web-build/
+/Furnishare/.DS_Store
