@@ -2,11 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const cookieParser = require("cookie-parser");
-const moment = require("moment-timezone");
-const upload = require("express-fileupload");
-var path = require("path");
 const dotenv = require("dotenv");
+const upload = require("express-fileupload");
+const path = require("path");
 
 dotenv.config({ path: "./config.env" });
 
@@ -22,7 +20,6 @@ app.use(
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(cookieParser());
 app.use(upload());
 
 if (process.env.NODE_ENV === "production") {
@@ -34,7 +31,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 mongoose.Promise = global.Promise;
-moment.suppressDeprecationWarnings = true;
 
 dbConfig = {
   url: process.env.dbURL,

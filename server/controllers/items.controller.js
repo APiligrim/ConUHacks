@@ -1,18 +1,20 @@
 const Item = require("../models/item.model.js");
+const moment = require("moment");
 
 exports.create = (req, res) => {
-  const Item = new Item({
+  const item = new Item({
     itemName: req.body.itemName,
     description: req.body.description,
     dateOfAddition: new Date().toLocaleDateString(),
-    availableUntil: req.body.availableUntil,
+    availableUntil: moment(req.body.availableUntil, "MM-DD-YYYY").toDate(),
     coordinates: req.body.coordinates,
     category: req.body.category,
     condition: req.body.condition,
     image: req.files.image,
   });
 
-  Item.save()
+  item
+    .save()
     .then((data) => {
       res.send(data);
     })
