@@ -10,10 +10,6 @@ const dotenv = require("dotenv");
 
 dotenv.config({ path: "./config.env" });
 
-let middleware = require("./util/middleware.js");
-
-const Item = require("./models/item.model");
-
 const port = process.env.PORT || 5000;
 
 const app = express();
@@ -56,8 +52,6 @@ mongoose
     console.log("Could not connect to the database. Exiting now...", err);
     process.exit();
   });
-
-const items = require("./controllers/items.controller.js");
 
 require("./routes/items.route.js")(app);
 
