@@ -8,10 +8,9 @@ import {
 } from "@ui-kitten/components";
 
 export const CaptureComponent = ({ navigation }) => {
-  const navigateAuthScreen = () => {
+  const navigateHomeScreen = () => {
     navigation.popToTop();
   };
-  navigation.popToTop();
 
   return (
     <>
@@ -21,7 +20,7 @@ export const CaptureComponent = ({ navigation }) => {
         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
       >
         <Text>Successfully signed out</Text>
-        <Button onPress={navigateAuthScreen}>Exit</Button>
+        <Button onPress={navigateHomeScreen}>Exit</Button>
       </Layout>
     </>
   );
