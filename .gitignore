@@ -13,3 +13,6 @@
 /Furnishare/*.orig.*
 /Furnishare/web-build/
 /Furnishare/.DS_Store
+node_modules
+ package-lock.json
+ 
