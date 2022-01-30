@@ -8,12 +8,12 @@ const { Navigator, Screen } = createStackNavigator();
 
 const HomeNavigator = () => (
   <Navigator options={{ headerShown: false }}>
-    {/* <Screen
+    <Screen
       name="Home"
       component={HomeComponent}
       options={{ headerShown: false }}
-    /> */}
-    <Screen name="Take a photo of the item"  component={CaptureComponent} />
+    />
+    <Screen name="Capture" component={CaptureComponent} />
   </Navigator>
 );
 
