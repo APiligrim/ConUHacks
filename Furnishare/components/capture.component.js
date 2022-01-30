@@ -24,9 +24,11 @@ export const CaptureComponent = ({ navigation }) => {
 
   const takePicture = async () => {
     try {
-      const options = { quality: 0.5, base64: true };
-      const data = await camera.takePictureAsync(options);
-      console.log(data, "picture data");
+        const options = { quality: 0.5, base64: true };
+        const data = await camera.takePictureAsync(options);
+        console.log(data.uri, 'picture data');
+
+        navigation.navigate("Add item", data)
     } catch (error) {
       console.log(error, "ERROR <<<<<<<<<<<<<");
     }
@@ -43,15 +45,8 @@ export const CaptureComponent = ({ navigation }) => {
       >
         <View style={styles.buttonContainer}>
           <TouchableOpacity
-            onPress={() => {
-              takePicture();
-            }}
-          >
-            <Image
-              resizeMode="contain"
-              style={{ width: 250, height: 70 }}
-              source={require("../assets/capture.png")}
-            />
+            onPress={()=>{takePicture()}}>
+             <Image resizeMode="contain" style={{width:250 , height:70} } source={(require('../assets/capture.png'))}/>
           </TouchableOpacity>
         </View>
       </Camera>
