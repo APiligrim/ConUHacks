@@ -16,7 +16,21 @@ import FurnitureIcon from "../assets/chair.png";
 import ElectronicsIcon from "../assets/laptop.png";
 import ClothingIcon from "../assets/shirt.png";
 
-const PlusIcon = (props) => <Icon {...props} name="plus-circle-outline" />;
+const PlusIcon = (props) => {
+  return (
+    <Image
+      {...props}
+      source={require("../assets/camera.png")}
+      style={{
+        ...props.style,
+        tintColor: "inherit",
+        height: props.style.height + 5,
+        width: props.style.width + 5,
+        marginHorizontal: props.style.marginHorizontal - 2,
+      }}
+    />
+  );
+};
 
 export const HomeComponent = ({ navigation }) => {
   const [location, setLocation] = useState(null);
