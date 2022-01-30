@@ -2,6 +2,8 @@
   "dependencies": {
     "@eva-design/eva": "^2.1.1",
     "@ui-kitten/components": "^5.1.1",
+    "add": "^2.0.6",
+    "react-native-image-picker": "^4.7.3",
     "react-native-svg": "^12.1.1"
   }
 }

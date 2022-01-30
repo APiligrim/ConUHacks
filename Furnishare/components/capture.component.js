@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Divider,
   Layout,
-  Text,
   TopNavigation,
   Button,
 } from "@ui-kitten/components";
-import { TouchableOpacity, View } from "react-native";
+import { Camera } from 'expo-camera';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 
 export const CaptureComponent = ({ navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
@@ -25,23 +25,57 @@ export const CaptureComponent = ({ navigation }) => {
   if (hasPermission === false) {
     return <Text>No access to camera</Text>;
   }
+
+  const takePicture = async () => {
+    try {
+        const options = { quality: 0.5, base64: true };
+        const data = await camera.current.takePictureAsync(options);
+        console.log(data.uri, 'picture data');
+    } catch (error) {
+        console.log(error, "ERROR <<<<<<<<<<<<<")
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Camera style={styles.camera} type={type}>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              setType(
-                type === Camera.Constants.Type.back
-                  ? Camera.Constants.Type.front
-                  : Camera.Constants.Type.back
-              );
-            }}>
-            <Text style={styles.text}> Flip </Text>
+            onPress={()=>takePicture}>
+             <Image resizeMode="contain" style={{width:250 , height:70} } source={(require('../assets/capture.png'))}/>
           </TouchableOpacity>
+
+        
         </View>
       </Camera>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  camera: {
+    flex: 1,
+  },
+  buttonContainer: {
+    flex: 0.1,
+    backgroundColor: 'transparent',
+    display: "flex",
+   
+    position: "absolute",
+    bottom: 50,
+    
+  },
+  button: {
+    flex: 1,
+     position:"relative",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text: {
+    fontSize: 18,
+    color: 'white',
+  },
+});

@@ -22,7 +22,7 @@ export const HomeComponent = ({ navigation }) => {
       <MapView
         style={{
           width: Dimensions.get("window").width,
-          height: Dimensions.get("window").height,
+          height: Dimensions.get("window").height + 50,
         }}
       />
     </Layout>

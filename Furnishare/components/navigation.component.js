@@ -8,8 +8,12 @@ const { Navigator, Screen } = createStackNavigator();
 
 const HomeNavigator = () => (
   <Navigator options={{ headerShown: false }}>
-    <Screen name="Home" component={HomeComponent} />
-    <Screen name="Capture" component={CaptureComponent} />
+    {/* <Screen
+      name="Home"
+      component={HomeComponent}
+      options={{ headerShown: false }}
+    /> */}
+    <Screen name="Take a photo of the item"  component={CaptureComponent} />
   </Navigator>
 );
 
