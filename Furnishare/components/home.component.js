@@ -8,6 +8,7 @@ import {
   Button,
   Card,
   Icon,
+  Input,
 } from "@ui-kitten/components";
 import { Dimensions, View, Image, Platform, StyleSheet } from "react-native";
 import * as Location from "expo-location";
@@ -32,20 +33,25 @@ const PlusIcon = (props) => {
   );
 };
 
+const searchIcon = (props) => <Icon {...props} name="search-outline" />;
 export const HomeComponent = ({ navigation }) => {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
-        return;
-      }
+  const [value, setValue] = useState("");
 
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
+  const getCurrentLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      setErrorMsg("Permission to access location was denied");
+      return;
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    setLocation(location);
+  };
+
+  useEffect(() => {
+    getCurrentLocation();
   }, []);
 
   return (
@@ -70,6 +76,36 @@ export const HomeComponent = ({ navigation }) => {
       >
         <MapIcons />
       </MapView>
+      <Input
+        value={value}
+        placeholder="Search for nearby items"
+        accessoryLeft={searchIcon}
+        onChangeText={(nextValue) => setValue(nextValue)}
+        style={{
+          position: "absolute",
+          top: 20,
+          borderRadius: 15,
+          width: Dimensions.get("window").width - 10,
+        }}
+      />
+      <Button
+        style={{
+          position: "absolute",
+          top: 70,
+          right: 10,
+          borderRadius: 15,
+        }}
+        accessoryLeft={(props) => (
+          <Icon
+            {...props}
+            name="compass-outline"
+            style={{ ...props.style, marginHorizontal: 5 }}
+          />
+        )}
+        onPress={() => {
+          getCurrentLocation();
+        }}
+      />
       <Button
         style={{
           position: "absolute",
