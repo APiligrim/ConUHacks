@@ -10,14 +10,15 @@ var itemSchema = new Schema({
   available: { type: Boolean, default: true },
   coordinates: [Number],
   category: {
-    type: "String",
+    type: String,
     enum: ["Furniture", "Electronics", "Clothing", "Miscellaneous"],
     default: "Miscellaneous",
   },
   condition: {
-    type: "String",
-    enum: ["Mint", "Good", "Satisfactory", "Broken"],
-    default: "Good",
+    type: Number,
+    min: 1,
+    max: 3,
+    default: 2,
   },
   image: {
     data: Buffer,
