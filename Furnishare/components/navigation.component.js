@@ -7,7 +7,7 @@ import { HomeComponent } from "./home.component";
 const { Navigator, Screen } = createStackNavigator();
 
 const HomeNavigator = () => (
-  <Navigator headerMode="none">
+  <Navigator options={{ headerShown: false }}>
     <Screen name="Home" component={HomeComponent} />
     <Screen name="Capture" component={CaptureComponent} />
   </Navigator>

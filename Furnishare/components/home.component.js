@@ -7,6 +7,7 @@ import {
   TopNavigation,
   Button,
 } from "@ui-kitten/components";
+import { Dimensions } from "react-native";
 
 export const HomeComponent = ({ navigation }) => {
   return (
